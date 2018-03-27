@@ -5,7 +5,7 @@ services:
   synctest:
     labels:
       - "traefik.backend=synctest"
-      - "traefik.frontend.rule=Host:synctest.localhost"
+      - "traefik.frontend.rule=Host:synctest.localhost;Host:synctest.10.10.205.176"
       - "traefik.port=3004"
       - "traefik.docker.network=webgateway"
       - "traefik.enable=true"   

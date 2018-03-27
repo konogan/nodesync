@@ -3,7 +3,7 @@ services:
   synctest:
     build: .
 
-    image: konogan/synctest
+    image: registry-recette.aws.lagardere-active.com/konogan/synctest
 
     environment:
       - PORT=3004

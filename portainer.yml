@@ -3,26 +3,20 @@
 version: "3"
 services:
   simple:
-    image: registry-recette.aws.lagardere-active.com/konogan/synctest
+    image: registry-recette.aws.lagardere-active.com/konogan/synctest:latest
     command: "node app.js"
     deploy:
-      
-      placement:
-        constraints:
-          - node.hostname == dkr-awsmaster-eu-central-1a-1
-      
       labels:
         traefik.backend: "synctest"
         traefik.frontend.rule: "Host:dev-kcossec.lagardere-active.com"
-        traefik.port: "3005"
+        traefik.port: "3004"
         traefik.docker.network: "webgateway"
         traefik.enable: "true"   
     
     networks:
-     - web
-
+     - webgateway
 
 networks:
-  web:
+  webgateway:
     external:
       name: webgateway
