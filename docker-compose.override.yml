@@ -1,0 +1,28 @@
+# this override enable traeffic and docker-sync for a local usage
+
+version: "3"
+services:
+  synctest:
+    labels:
+      - "traefik.backend=synctest"
+      - "traefik.frontend.rule=Host:synctest.localhost"
+      - "traefik.port=3004"
+      - "traefik.docker.network=webgateway"
+      - "traefik.enable=true"   
+
+    networks: 
+      - webgateway
+
+    volumes:
+     - synctest-vol:/var/www/synctest/app:nocopy
+
+    command: nodemon app/app.js
+
+networks:
+  webgateway:
+    external:
+      name: webgateway
+
+volumes:
+ synctest-vol:
+   external: true

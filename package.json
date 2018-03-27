@@ -1,12 +1,12 @@
 {
-  "name": "portaligk",
+  "name": "nodesync",
   "version": "1.0.0",
   "description": "On teste tout ça",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "",
+  "author": "konogan",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",

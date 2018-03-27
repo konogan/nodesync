@@ -1,18 +1,9 @@
-# Use this file for building prod image to send 
-
 version: "3"
 services:
   synctest:
     build: .
 
     image: konogan/synctest
-
-    labels:
-      - "traefik.backend=synctest"
-      - "traefik.frontend.rule=Host:synctest.localhost"
-      - "traefik.port=3004"
-      - "traefik.docker.network=webgateway"
-      - "traefik.enable=true"   
 
     environment:
       - PORT=3004
@@ -22,20 +13,5 @@ services:
 
     expose: 
       - "3004"
-
-    networks: 
-      - webgateway
-
-    volumes:
-     - synctest-vol:/var/www/synctest/app:nocopy
-
-    command: nodemon app/app.js
-
-networks:
-  webgateway:
-    external:
-      name: webgateway
-
-volumes:
- synctest-vol:
-   external: true
+   
+    command: node app/app.js
