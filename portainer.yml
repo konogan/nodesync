@@ -1,0 +1,28 @@
+# Use this file in PORTAINER  Stack editor
+
+version: "3"
+services:
+  simple:
+    image: registry-recette.aws.lagardere-active.com/konogan/synctest
+    command: "node app.js"
+    deploy:
+      
+      placement:
+        constraints:
+          - node.hostname == dkr-awsmaster-eu-central-1a-1
+      
+      labels:
+        traefik.backend: "synctest"
+        traefik.frontend.rule: "Host:dev-kcossec.lagardere-active.com"
+        traefik.port: "3005"
+        traefik.docker.network: "webgateway"
+        traefik.enable: "true"   
+    
+    networks:
+     - web
+
+
+networks:
+  web:
+    external:
+      name: webgateway

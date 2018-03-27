@@ -1,0 +1,9 @@
+version: "2"
+
+options:
+  verbose: true
+
+syncs:
+  synctest-vol: 
+    notify_terminal: true
+    src: './app' # the directory on the host system
