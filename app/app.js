@@ -1,15 +1,12 @@
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var routes = require("./routes/routes.js");
-var app = express();
-var port = process.env.PORT || 3004;
+const express = require("express");
+const bodyParser = require("body-parser");
+const routes = require("./routes/routes.js");
+const app = express();
+const port = process.env.PORT || 3004;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-console.log("roro");
-console.log("test");
 
 routes(app);
 
